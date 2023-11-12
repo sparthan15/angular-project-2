@@ -1,0 +1,33 @@
+<app-home></app-home>
+<div class="container">
+    <mat-divider></mat-divider>
+    <form class="login-form">
+        <h1>{{title}}</h1>
+        <mat-divider></mat-divider>
+        <p></p>
+        <mat-grid-list cols="1" rowHeight="60px">
+            <mat-grid-tile>
+                <mat-form-field class="login-form-field">
+                    <mat-label>User name</mat-label>
+                    <input matInput type="text" [(ngModel)]="userName" required name="userName">
+                    <button *ngIf="userName" matSuffix mat-icon-button aria-label="Clear" (click)="userName=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="login-form-field">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="password" name="password" >
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-raised-button color="primary" (click)="loginButtonClicked()">Log in</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</div>
